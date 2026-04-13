@@ -1,9 +1,13 @@
-import axios from 'axios'
+﻿import axios from 'axios'
 import type { Task, UpdateTaskData } from '../types/task'
+
+const defaultBaseUrl = import.meta.env.PROD
+  ? '/api/tasks'
+  : 'http://localhost:3001/tasks'
 
 // This Axios instance points to the Fastify backend.
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3001/tasks'
+  baseURL: import.meta.env.VITE_API_BASE_URL || defaultBaseUrl
 })
 
 // Get all tasks from the backend.
@@ -34,4 +38,3 @@ export async function deleteTask(id: string): Promise<{ message: string }> {
   const response = await apiClient.delete<{ message: string }>(`/${id}`)
   return response.data
 }
-
