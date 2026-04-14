@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "@vue/cli-service": "^5.0.9"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^6.0.6",
+    "vite": "^8.0.8"
   }
 }
